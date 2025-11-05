@@ -1,0 +1,244 @@
+/* Variables de color de la empresa */
+:root {
+    --master-red: #e60000; /* Un rojo vibrante de tu logo */
+    --master-dark-gray: #333333; /* Un gris oscuro casi negro */
+    --master-light-gray: #f4f7f6; /* Fondo general */
+    --master-white: #ffffff;
+}
+
+/* Estilos generales */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0; /* Quitamos el margen por defecto */
+    background-color: var(--master-light-gray);
+    color: var(--master-dark-gray);
+    display: flex; /* Para centrar el contenido */
+    justify-content: center;
+    align-items: flex-start; /* Alineamos arriba */
+    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+/* Contenedor principal del cotizador (oculto por defecto) */
+.cotizador-container {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--master-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cotizador-container.hidden {
+    display: none;
+}
+
+/* Estilos de la cabecera (logo y título) */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el logo y el título */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.logo-header {
+    height: 80px; /* Tamaño del logo en la cabecera */
+    margin-right: 20px;
+}
+
+h1 {
+    color: var(--master-red);
+    text-align: center;
+    font-size: 2.2em;
+    margin: 0; /* Resetear margen por defecto */
+    padding: 10px 0;
+}
+
+/* Contenedor de configuración */
+.configuracion {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--master-light-gray);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna para un efecto más sutil */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Para que se vea bien en móviles */
+}
+
+.configuracion label {
+    font-weight: bold;
+    color: var(--master-dark-gray);
+}
+
+.configuracion input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.configuracion button {
+    padding: 10px 20px;
+    background-color: var(--master-red);
+    color: var(--master-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.configuracion button:hover {
+    background-color: #cc0000; /* Un rojo un poco más oscuro al pasar el ratón */
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--master-red), rgba(0, 0, 0, 0));
+    margin: 30px 0;
+}
+
+/* Estilos de la tabla */
+.resultados table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--master-white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.resultados th, .resultados td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: left;
+}
+
+.resultados th {
+    background-color: var(--master-dark-gray);
+    color: var(--master-white);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+/* Columna de nombre de componente */
+.resultados td:first-child {
+    width: 40%;
+    font-weight: 500;
+}
+
+/* Columna de inputs de precio */
+.resultados input.price {
+    width: 90px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* Columnas de cantidad y subtotal */
+.resultados .qty, .resultados .sub {
+    text-align: right;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    width: 15%;
+}
+
+/* Fila del Total */
+.resultados tfoot tr {
+    background-color: var(--master-dark-gray);
+    color: var(--master-white);
+}
+
+.resultados tfoot .total-label {
+    text-align: right;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+.resultados tfoot .total-valor {
+    text-align: right;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--master-red); /* Resaltamos el total en rojo */
+}
+
+
+/* --- Estilos de la Pantalla de Contraseña --- */
+.password-screen {
+    position: fixed; /* Cubre toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+}
+
+.password-screen.hidden {
+    display: none;
+}
+
+.password-box {
+    background-color: var(--master-white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 350px;
+}
+
+.logo-login {
+    width: 150px; /* Tamaño del logo en la pantalla de login */
+    margin-bottom: 25px;
+}
+
+.password-box p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--master-dark-gray);
+    font-weight: bold;
+}
+
+.password-box input[type="password"] {
+    width: calc(100% - 20px); /* Ajusta el ancho */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.password-box button {
+    padding: 12px 25px;
+    background-color: var(--master-red);
+    color: var(--master-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.password-box button:hover {
+    background-color: #cc0000;
+}
+
+.error-message {
+    color: var(--master-red);
+    margin-top: 15px;
+    font-weight: bold;
+    display: none; /* Oculto por defecto */
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador Master Pantógrafos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="password_screen" class="password-screen">
+        <div class="password-box">
+            <img src="logo_master.png" alt="Logo Master Pantógrafos" class="logo-login">
+            <p>Acceso al Cotizador</p>
+            <input type="password" id="password_input" placeholder="Introduce la contraseña">
+            <button id="login_button">Ingresar</button>
+            <p id="error_message" class="error-message"></p>
+        </div>
+    </div>
+
+    <div id="cotizador_container" class="cotizador-container hidden">
+        <header>
+            <img src="logo_master.png" alt="Logo Master Pantógrafos" class="logo-header">
+            <h1>Cotizador de Máquina de Oxicorte</h1>
+        </header>
+    
+        <div class="configuracion">
+            <label for="n_sopletes">Número de Sopletes (n):</label>
+            <input type="number" id="n_sopletes" value="1" min="1">
+            <button id="btn_calcular">Calcular Cotización</button>
+        </div>
+    
+        <hr>
+    
+        <div class="resultados">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Precio Unitario ($)</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal ($)</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla_componentes">
+                    <tr>
+                        <td>Reguladoras de oxigeno</td>
+                        <td><input type="number" class="price" id="price_reg_oxigeno" value="0"></td>
+                        <td class="qty" id="qty_reg_oxigeno">0</td>
+                        <td class="sub" id="sub_reg_oxigeno">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Reguladora de gas</td>
+                        <td><input type="number" class="price" id="price_reg_gas" value="0"></td>
+                        <td class="qty" id="qty_reg_gas">0</td>
+                        <td class="sub" id="sub_reg_gas">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Reguladora de oxigeno alta presión</td>
+                        <td><input type="number" class="price" id="price_reg_oxi_alta" value="0"></td>
+                        <td class="qty" id="qty_reg_oxi_alta">0</td>
+                        <td class="sub" id="sub_reg_oxi_alta">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Relojes de presión</td>
+                        <td><input type="number" class="price" id="price_relojes" value="0"></td>
+                        <td class="qty" id="qty_relojes">0</td>
+                        <td class="sub" id="sub_relojes">0.00</td>
+                    </tr>
+    
+                    <tr>
+                        <td>Soplete/s de oxicorte</td>
+                        <td><input type="number" class="price" id="price_sopletes" value="0"></td>
+                        <td class="qty" id="qty_sopletes">0</td>
+                        <td class="sub" id="sub_sopletes">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Guía lineales 250mm de 15</td>
+                        <td><input type="number" class="price" id="price_guias_15" value="0"></td>
+                        <td class="qty" id="qty_guias_15">0</td>
+                        <td class="sub" id="sub_guias_15">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Motores 12V</td>
+                        <td><input type="number" class="price" id="price_motores_12v" value="0"></td>
+                        <td class="qty" id="qty_motores_12v">0</td>
+                        <td class="sub" id="sub_motores_12v">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Patines 15</td>
+                        <td><input type="number" class="price" id="price_patines_15" value="0"></td>
+                        <td class="qty" id="qty_patines_15">0</td>
+                        <td class="sub" id="sub_patines_15">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Porta soplete de oxicorte</td>
+                        <td><input type="number" class="price" id="price_porta_soplete" value="0"></td>
+                        <td class="qty" id="qty_porta_soplete">0</td>
+                        <td class="sub" id="sub_porta_soplete">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Patines 20</td>
+                        <td><input type="number" class="price" id="price_patines_20" value="0"></td>
+                        <td class="qty" id="qty_patines_20">0</td>
+                        <td class="sub" id="sub_patines_20">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Polea Z</td>
+                        <td><input type="number" class="price" id="price_polea_z" value="0"></td>
+                        <td class="qty" id="qty_polea_z">0</td>
+                        <td class="sub" id="sub_polea_z">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Porta polea Z</td>
+                        <td><input type="number" class="price" id="price_porta_polea_z" value="0"></td>
+                        <td class="qty" id="qty_porta_polea_z">0</td>
+                        <td class="sub" id="sub_porta_polea_z">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Relés 24VDC</td>
+                        <td><input type="number" class="price" id="price_reles_24" value="0"></td>
+                        <td class="qty" id="qty_reles_24">0</td>
+                        <td class="sub" id="sub_reles_24">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Zócalo relés 24VDC</td>
+                        <td><input type="number" class="price" id="price_zocalo_reles_24" value="0"></td>
+                        <td class="qty" id="qty_zocalo_reles_24">0</td>
+                        <td class="sub" id="sub_zocalo_reles_24">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Electroválvulas 24VDC</td>
+                        <td><input type="number" class="price" id="price_electrovalvulas" value="0"></td>
+                        <td class="qty" id="qty_electrovalvulas">0</td>
+                        <td class="sub" id="sub_electrovalvulas">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Contactos normal abierto</td>
+                        <td><input type="number" class="price" id="price_contactos_na" value="0"></td>
+                        <td class="qty" id="qty_contactos_na">0</td>
+                        <td class="sub" id="sub_contactos_na">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Contactos normal cerrado</td>
+                        <td><input type="number" class="price" id="price_contactos_nc" value="0"></td>
+                        <td class="qty" id="qty_contactos_nc">0</td>
+                        <td class="sub" id="sub_contactos_nc">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Botones pulsadores</td>
+                        <td><input type="number" class="price" id="price_pulsadores" value="0"></td>
+                        <td class="qty" id="qty_pulsadores">0</td>
+                        <td class="sub" id="sub_pulsadores">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Piñones motor Z</td>
+                        <td><input type="number" class="price" id="price_pinones_z" value="0"></td>
+                        <td class="qty" id="qty_pinones_z">0</td>
+                        <td class="sub" id="sub_pinones_z">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Metros de manguera para gas/oxigeno</td>
+                        <td><input type="number" class="price" id="price_manguera" value="0"></td>
+                        <td class="qty" id="qty_manguera">0</td>
+                        <td class="sub" id="sub_manguera">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Placas de aluminio porta oxi</td>
+                        <td><input type="number" class="price" id="price_placas_aluminio" value="0"></td>
+                        <td class="qty" id="qty_placas_aluminio">0</td>
+                        <td class="sub" id="sub_placas_aluminio">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Metros cadena chica</td>
+                        <td><input type="number" class="price" id="price_cadena_chica" value="0"></td>
+                        <td class="qty" id="qty_cadena_chica">0</td>
+                        <td class="sub" id="sub_cadena_chica">0.00</td>
+                    </tr>
+    
+                    <tr>
+                        <td>Poleas X (si n>1)</td>
+                        <td><input type="number" class="price" id="price_poleas_x" value="0"></td>
+                        <td class="qty" id="qty_poleas_x">0</td>
+                        <td class="sub" id="sub_poleas_x">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Porta poleas X (si n>1)</td>
+                        <td><input type="number" class="price" id="price_porta_poleas_x" value="0"></td>
+                        <td class="qty" id="qty_porta_poleas_x">0</td>
+                        <td class="sub" id="sub_porta_poleas_x">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Linga X (si n>1)</td>
+                        <td><input type="number" class="price" id="price_linga_x" value="0"></td>
+                        <td class="qty" id="qty_linga_x">0</td>
+                        <td class="sub" id="sub_linga_x">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Flauta repartidora (si n>2)</td>
+                        <td><input type="number" class="price" id="price_flauta" value="0"></td>
+                        <td class="qty" id="qty_flauta">0</td>
+                        <td class="sub" id="sub_flauta">0.00</td>
+                    </tr>
+    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="total-label">TOTAL:</td>
+                        <td class="total-valor" id="total_cost">0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+      // ¡AQUÍ PEGAS TU CÓDIGO!
+      const firebaseConfig = {
+  apiKey: "AIzaSyBTIsU_vT4bRtxxum2-xAX0HNZ8ETaagP0",
+  authDomain: "cotizador-master.firebaseapp.com",
+  databaseURL: "https://cotizador-master-default-rtdb.firebaseio.com",
+  projectId: "cotizador-master",
+  storageBucket: "cotizador-master.firebasestorage.app",
+  messagingSenderId: "102981780933",
+  appId: "1:102981780933:web:2f67b44a660d33862537ac",
+  measurementId: "G-DVEK3XZKGS"
+}; 
+      // Inicializa Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
